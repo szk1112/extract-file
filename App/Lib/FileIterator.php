@@ -10,33 +10,43 @@ use Iterator;
 class FileIterator  implements Iterator
 {
 
-
-    public $fp;
+    public  $fp;
     private $line;
 
     public function __construct($path, $mode = 'r')
     {
-        $this->fp = fopen($path, $mode);
+        $this->fp   = fopen($path, $mode);
         $this->line = fgets($this->fp);
     }
 
-    public function __destruct() {
+    public function __destruct()
+    {
         @fclose($this->fp);
     }
-    public function current() {
+
+    public function current()
+    {
         return $this->line;
     }
-    public function key() {
+
+    public function key()
+    {
         throw new BadFunctionCallException();
     }
-    public function next() {
+
+    public function next()
+    {
         $this->line = fgets($this->fp);
         return $this->line;
     }
-    public function rewind() {
+
+    public function rewind()
+    {
         return rewind($this->fp);
     }
-    public function valid() {
+
+    public function valid(): bool
+    {
         return (!is_null($this->fp) && $this->line !== false);
     }
 

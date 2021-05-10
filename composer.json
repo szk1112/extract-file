@@ -1,10 +1,17 @@
 {
     "name": "sdcraft/extract-files",
     "description": "extract file by list",
-    "require": {},
+    "require": {
+        "monolog/monolog": "^2.2"
+    },
     "autoload": {
         "psr-4": {
             "App\\": "App/"
-        }
+        },
+        "files": [
+            "App/Helper/FileHelper.php",
+            "App/Helper/StringHelper.php",
+            "App/Helper/LogHelper.php"
+        ]
     }
 }
